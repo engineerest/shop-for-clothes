@@ -1,0 +1,183 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block content %}
+   <!-- Start Title -->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="page-title">
+                        {% if cart_products %}
+                        <h2 class="text-dark fw-light lh-base mt-5"><span
+                                class="fw-medium title">Ваша корзина</span> містить наступні товари:</h2>
+                        {% else %}
+                        <h2 class="text-dark fw-light lh-base mt-5"><span
+                                class="fw-medium title">Ваша корзина</span> не містить товари</h2>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </section>
+    <!-- End Title -->
+
+    <section class="sm-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="table-responsive mt-4">
+                        <table class="table caption-top table-borderless pro-table">
+                            <thead class="bg-light text-dark">
+                                <tr>
+                                    <th scope="col" class="fw-semibold mt-2">
+                                        Товари
+                                    </th>
+                                    <th scope="col" class="fw-semibold mt-2">
+                                        Ціна
+                                    </th>
+                                    <th scope="col" class="fw-semibold mt-2">
+                                        Знижка
+                                    </th>
+                                    <th scope="col" class="fw-semibold mt-2">
+                                        Кількість
+                                    </th>
+                                    <th scope="col" class="fw-semibold mt-2">
+                                        Вартість
+                                    </th>
+                                    <th scope="col" class="fw-semibold mt-2">
+                                        Видалити
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% if cart %}
+                            {% for product in cart %}
+                            <tr class="align-middle">
+                                            <th scope="row">
+                                                <img class="img-fluid rounded" src="{% static 'images/products/pro-1.jpg'%}" width="125"
+                                                    alt="" />
+                                            </th>
+                                            <td>
+                                                <h5 class="fs-16 fw-medium">{{ product.name }}</h5>
+                                                <div class="price d-inline-block">
+                                                    <ins
+                                                        class="text-dark pe-1 fs-15 fw-semibold text-decoration-none">{{ product.cart_price_with_discount }}</ins>
+                                                    <del class="text-muted fs-15">{{ product.cart_price }}</del>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <span
+                                                        class="badge bg-soft-primary text-primary rounded-3 fs-14 fw-bold py-2">-
+                                                        {{ product.cart_discount }}</span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <select class="form-select border" id="autoSizingSelect">
+                                                    {% for quantity in cart_quantity %}
+                                                        <option value="{{ quantity }}" {% if quantity %}selected{% endif %}>{{ quantity }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <div class="price d-inline-block">
+                                                    <ins
+                                                        class="text-dark pe-1 fs-15 fw-semibold text-decoration-none">{{ product.price * product.quantity }}</ins>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <a href="javascript:void(0)" class="text-dark fw-semibold">Видалити <span
+                                                        class="mx-3"></span></a>
+                                            </td>
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row border-top">
+{#                        <div class="col-lg-6 mt-4">#}
+{#                            <div class="mb-3 row g-2 align-items-center">#}
+{#                                <label for="inputCode"#}
+{#                                    class="col-sm-3 col-3 col-form-label text-uppercase text-dark fw-semibold"><i#}
+{#                                        class="mdi mdi-tag-multiple fs-18 text-dark align-middle"></i> Apply#}
+{#                                    Coupen</label>#}
+{#                                <div class="col-sm-6 col-5">#}
+{#                                    <input type="text" class="form-control bg-light border" id="inputCode" />#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+                        <div class="col-lg-4 offset-lg-2 mt-4">
+                            <div>
+                                <ul class="list-unstyled list-inline border-bottom py-3 mb-0">
+                                    <li class="list-inline-item">
+                                        <h5 class="fs-15 mb-0 fw-semibold">Price :</h5>
+                                    </li>
+                                    <li class="list-inline-item float-end text-dark"></li>
+                                </ul>
+                                <ul class="list-unstyled list-inline border-bottom py-3 mb-0">
+                                    <li class="list-inline-item">
+                                        <h5 class="fs-15 mb-0 fw-semibold">Discount :</h5>
+                                    </li>
+                                    <li class="list-inline-item float-end text-dark">100.00</li>
+                                </ul>
+                                <ul class="list-unstyled list-inline py-3 mb-0">
+                                    <li class="list-inline-item">
+                                        <h5 class="fs-16 mb-0 fw-semibold">Total :</h5>
+                                    </li>
+                                    <li class="list-inline-item fs-16 fw-semibold text-dark float-end">{{ total_price }}</li>
+                                </ul>
+                                <a href="{% url 'product-checkout' %}" class="btn btn-primary mt-3 float-end">Proceed To
+                                    Checkout <i class="icon-xs icon" data-feather="arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- start brand-logo -->
+    <section class="client-section section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h4 class="fw-semibold border-bottom d-inline-block text-dark pb-3">Trusted by Thousands</h4>
+                </div>
+            </div>
+
+            <div class="row justify-content-between">
+                <div class="col-md-auto col-12 mt-3 py-lg-0 py-3">
+                    <div class="client-box">
+                        <img src="{% static 'images/brand/brand-1.png'%}" class="mx-auto d-block img-fluid" alt="client-logo" />
+                    </div>
+                </div>
+                <div class="col-md-auto col-12 mt-3 py-lg-0 py-3">
+                    <div class="client-box">
+                        <img src="{% static 'images/brand/brand-2.png'%}" class="mx-auto d-block img-fluid" alt="client-logo" />
+                    </div>
+                </div>
+                <div class="col-md-auto col-12 mt-3 py-lg-0 py-3">
+                    <div class="client-box">
+                        <img src="{% static 'images/brand/brand-3.png'%}" class="mx-auto d-block img-fluid" alt="client-logo" />
+                    </div>
+                </div>
+                <div class="col-md-auto col-12 mt-3 py-lg-0 py-3">
+                    <div class="client-box">
+                        <img src="{% static 'images/brand/brand-4.png'%}" class="mx-auto d-block img-fluid" alt="client-logo" />
+                    </div>
+                </div>
+                <div class="col-md-auto col-12 mt-3 py-lg-0 py-3">
+                    <div class="client-box">
+                        <img src="{% static 'images/brand/brand-5.png'%}" class="mx-auto d-block img-fluid" alt="client-logo" />
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </section>
+    <!-- end brand-logo -->
+{% endblock content %}

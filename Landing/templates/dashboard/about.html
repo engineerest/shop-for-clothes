@@ -1,0 +1,129 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block content %}
+    <!-- Start Title -->
+    <section class="hero position-relative overflow-hidden align-items-center" id="home">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-9 text-center">
+
+                    <h2 class="text-dark fw-light lh-base mt-5">Sozia Is One Of Best <span class="fw-medium title">Web Design</span> & <span class="fw-medium title">Development</span> Company.</h2>
+
+                    <p class="text-muted fs-16">We create digital assets and we're focused on Web Technologies and Design, based on London, United Kingdom. We
+                        build creative & professional themes.</p>
+                    <h5 class="mt-4 fw-normal"> A digital studio crafting <span class="title">beautiful</span> experiences.</h5>
+                </div>
+            </div>
+        </div>
+        <!-- end container -->
+    </section>
+    <!-- End Title -->
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <img src="{% static 'images/bg.jpg'%}" alt="about-img" class="img-fluid img-thumbnail mt-5">
+                </div>
+            </div>
+
+            <div class="row text-center justify-content-center">
+                <div class="col-lg-8 mt-5">
+                    <h4 class="fw-semibold border-bottom d-inline-block text-dark pb-3">What is our clients say?</h4>
+                    <div class="testimonial-box">
+                        <i class="icon-sm sw-1 my-3" data-feather="message-square"></i>
+                        <p class="text-muted fst-italic fs-18"> "It is a long established fact that a reader will be
+                            distracted by the readable content of a
+                            page when looking at its layout. The point of using Lorem Ipsum is that it has a
+                            more-or-less."</p>
+                        <img src="{% static 'images/user-1.png'%}" class="testi-user rounded-circle img-thumbnail"
+                            alt="testimonials-user" style="width: 64px; height: 64px;">
+                        <p class="text-muted fs-16 mt-3">Template User - sozia Template</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-12 mt-5">
+                    <h4 class="fw-semibold border-bottom d-inline-block text-dark pb-3">Meet Our Team</h4>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-3 mt-4">
+                    <div class="team-box">
+                        <img src="{% static 'images/team/team-1.jpg'%}" class="img-fluid rounded" alt="">
+                        <h5 class="text-dark mt-3 fs-16">Hubert Brandt</h5>
+                        <p class="text-muted">CEO/Founder</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 mt-4">
+                    <div class="team-box">
+                        <img src="{% static 'images/team/team-2.jpg'%}" class="img-fluid rounded" alt="">
+                        <h5 class="text-dark mt-3 fs-16">Andrew Sparks</h5>
+                        <p class="text-muted">CTO/Co-Founder</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 mt-4">
+                    <div class="team-box">
+                        <img src="{% static 'images/team/team-3.jpg'%}" class="img-fluid rounded" alt="">
+                        <h5 class="text-dark mt-3 fs-16">David Downs</h5>
+                        <p class="text-muted">Web Designer</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 mt-4">
+                    <div class="team-box">
+                        <img src="{% static 'images/team/team-4.jpg'%}" class="img-fluid rounded" alt="">
+                        <h5 class="text-dark mt-3 fs-16">Jennifer Pak</h5>
+                        <p class="text-muted">Manager</p>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- end container -->
+    </section>
+
+
+    <!-- start brand-logo -->
+    <section class="client-section section mt-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h4 class="fw-semibold border-bottom d-inline-block text-dark pb-3">Trusted by Thousands</h4>
+                </div>
+            </div>
+
+            <div class="row justify-content-between">
+                <div class="col-md-auto col-12 mt-3 py-lg-0 py-3">
+                    <div class="client-box">
+                        <img src="{% static 'images/brand/brand-1.png'%}" class="mx-auto d-block img-fluid" alt="client-logo" />
+                    </div>
+                </div>
+                <div class="col-md-auto col-12 mt-3 py-lg-0 py-3">
+                    <div class="client-box">
+                        <img src="{% static 'images/brand/brand-2.png'%}" class="mx-auto d-block img-fluid" alt="client-logo" />
+                    </div>
+                </div>
+                <div class="col-md-auto col-12 mt-3 py-lg-0 py-3">
+                    <div class="client-box">
+                        <img src="{% static 'images/brand/brand-3.png'%}" class="mx-auto d-block img-fluid" alt="client-logo" />
+                    </div>
+                </div>
+                <div class="col-md-auto col-12 mt-3 py-lg-0 py-3">
+                    <div class="client-box">
+                        <img src="{% static 'images/brand/brand-4.png'%}" class="mx-auto d-block img-fluid" alt="client-logo" />
+                    </div>
+                </div>
+                <div class="col-md-auto col-12 mt-3 py-lg-0 py-3">
+                    <div class="client-box">
+                        <img src="{% static 'images/brand/brand-5.png'%}" class="mx-auto d-block img-fluid" alt="client-logo" />
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </section>
+    <!-- end brand-logo -->
+    
+{% endblock content %}
