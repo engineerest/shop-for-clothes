@@ -69,7 +69,7 @@
                     <div class="sidebar shadow rounded-3 py-4 mt-4">
                         <div class="mb-4 ms-4">
                             <a href="{% url 'products' %}"><i data-feather="grid" class="text-primary me-2"></i></a>
-                            <a href="{% url 'product-list' %}"><i data-feather="list" class="text-muted"></i></a>
+                            <a href="{% url 'product_list' %}"><i data-feather="list" class="text-muted"></i></a>
                         </div>
                         <!-- categories -->
                         <div>
@@ -131,13 +131,13 @@
                 </div>
                 <div class="col-md-9">
                     <div class="row">
-                        {% for product in serializer_product %} 
+                        {% for product in products %} 
                         <div class="col-lg-4 col-md-6">
                             <div class="product-item mt-4">
                                 <div class="product-img rounded position-relative">
                                     <img class="img-fluid" src="{% static 'images/products/pro-1.jpg'%}" alt="" />
                                     <span
-                                        class="text-dark badge bg-light rounded-3 fs-14 fw-bold position-absolute top-0 start-0 mt-2 ms-2 py-2">-20%</span>
+                                        class="text-dark badge bg-light rounded-3 fs-14 fw-bold position-absolute top-0 start-0 mt-2 ms-2 py-2">-{{ product.discount }}%</span>
 
                                     <div
                                         class="hover-content text-center w-100 position-absolute bottom-0 start-50 translate-middle-x py-2 mb-3">
@@ -152,7 +152,7 @@
                                         <ins class="pe-2 fs-15 fw-semibold text-decoration-none text-dark">29.00</ins>
                                         <del class="text-muted fs-15">{{ product.price }}</del>
                                     </div>
-                                    <a href="{% url 'product-detail' %}">
+                                    <a href="{% url 'product_detail' %}">
                                         <p class="text-muted fw-normal lh-base my-1">{{ product.name }}</p>
                                     </a>
                                 </div>

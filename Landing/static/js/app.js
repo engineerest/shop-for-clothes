@@ -158,13 +158,32 @@ function changeMode(event) {
     var y = document.getElementById("mode");
 
     if (currentMode === "light") {
-        x.setAttribute('href', '/static/css/style-dark.css')
-        y.setAttribute('data-class', 'dark')
+        x.setAttribute('href', '/static/css/style-dark.css');
+        y.setAttribute('data-class', 'dark');
+        localStorage.setItem('mode', 'dark');
     } else {
-        x.setAttribute('href', '/static/css/style.css')
-        y.setAttribute('data-class', 'light')
+        x.setAttribute('href', '/static/css/style.css');
+        y.setAttribute('data-class', 'light');
+        localStorage.setItem('mode', 'light');
     }
 }
+
+function applySavedMode() {
+    var savedMode = localStorage.getItem('mode');
+    var x = document.getElementById("app-css");
+    var y = document.getElementById("mode");
+
+    if (savedMode === 'dark') {
+        x.setAttribute('href', '/static/css/style-dark.css');
+        y.setAttribute('data-class', 'dark');
+    } else {
+        x.setAttribute('href', '/static/css/style.css');
+        y.setAttribute('data-class', 'light');
+    }
+}
+
+// Применяем сохранённый режим при загрузке страницы
+document.addEventListener('DOMContentLoaded', applySavedMode);
 
 // Swicher
 function toggleSwitcher() {
@@ -175,6 +194,7 @@ function toggleSwitcher() {
         i.style.left = "-189px";
     }
 };
+
 
 function setColor(theme) {
     document.getElementById('color-opt').href = './static/css/colors/' + theme + '.css';

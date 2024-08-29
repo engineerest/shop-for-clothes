@@ -52,48 +52,48 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            {% if cart %}
-                            {% for product in cart %}
-                            <tr class="align-middle">
-                                            <th scope="row">
-                                                <img class="img-fluid rounded" src="{% static 'images/products/pro-1.jpg'%}" width="125"
-                                                    alt="" />
-                                            </th>
-                                            <td>
-                                                <h5 class="fs-16 fw-medium">{{ product.name }}</h5>
-                                                <div class="price d-inline-block">
-                                                    <ins
-                                                        class="text-dark pe-1 fs-15 fw-semibold text-decoration-none">{{ product.cart_price_with_discount }}</ins>
-                                                    <del class="text-muted fs-15">{{ product.cart_price }}</del>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    <span
-                                                        class="badge bg-soft-primary text-primary rounded-3 fs-14 fw-bold py-2">-
-                                                        {{ product.cart_discount }}</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <select class="form-select border" id="autoSizingSelect">
-                                                    {% for quantity in cart_quantity %}
-                                                        <option value="{{ quantity }}" {% if quantity %}selected{% endif %}>{{ quantity }}</option>
-                                                    {% endfor %}
-                                                </select>
-                                            </td>
-                                            <td>
-                                                <div class="price d-inline-block">
-                                                    <ins
-                                                        class="text-dark pe-1 fs-15 fw-semibold text-decoration-none">{{ product.price * product.quantity }}</ins>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <a href="javascript:void(0)" class="text-dark fw-semibold">Видалити <span
-                                                        class="mx-3"></span></a>
-                                            </td>
-                            </tr>
+                            {% if cart_products %}
+                                {% for product in cart_products %}
+                                    <tr class="align-middle">
+                                                    <th scope="row">
+                                                        <img class="img-fluid rounded" src="{% static 'images/products/pro-1.jpg'%}" width="125"
+                                                            alt="" />
+                                                    </th>
+                                                    <td>
+                                                        <h5 class="fs-16 fw-medium">{{ product.name }}</h5>
+                                                        <div class="price d-inline-block">
+                                                            <ins
+                                                                class="text-dark pe-1 fs-15 fw-semibold text-decoration-none">{{ product.cart_price_with_discount }}</ins>
+                                                            <del class="text-muted fs-15">{{ product.cart_price }}</del>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div>
+                                                            <span
+                                                                class="badge bg-soft-primary text-primary rounded-3 fs-14 fw-bold py-2">-
+                                                                {{ product.cart_discount }}</span>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-select border" id="autoSizingSelect">
+                                                            {% for quantity in cart_quantity %}
+                                                                <option value="{{ quantity }}" {% if quantity %}selected{% endif %}>{{ quantity }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <div class="price d-inline-block">
+                                                            <ins
+                                                                class="text-dark pe-1 fs-15 fw-semibold text-decoration-none">{{ product.total_price }}</ins>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:void(0)" class="text-dark fw-semibold">Видалити <span
+                                                                class="mx-3"></span></a>
+                                                    </td>
+                                    </tr>
+                                {% endfor %}
                             {% endif %}
-                            {% endfor %}
                             </tbody>
                         </table>
                     </div>
@@ -111,17 +111,17 @@
 {#                        </div>#}
                         <div class="col-lg-4 offset-lg-2 mt-4">
                             <div>
-                                <ul class="list-unstyled list-inline border-bottom py-3 mb-0">
-                                    <li class="list-inline-item">
-                                        <h5 class="fs-15 mb-0 fw-semibold">Price :</h5>
-                                    </li>
-                                    <li class="list-inline-item float-end text-dark"></li>
-                                </ul>
+{#                                <ul class="list-unstyled list-inline border-bottom py-3 mb-0">#}
+{#                                    <li class="list-inline-item">#}
+{#                                        <h5 class="fs-15 mb-0 fw-semibold">Price :</h5>#}
+{#                                    </li>#}
+{#                                    <li class="list-inline-item float-end text-dark">{{ total_price }}</li>#}
+{#                                </ul>#}
                                 <ul class="list-unstyled list-inline border-bottom py-3 mb-0">
                                     <li class="list-inline-item">
                                         <h5 class="fs-15 mb-0 fw-semibold">Discount :</h5>
                                     </li>
-                                    <li class="list-inline-item float-end text-dark">100.00</li>
+                                    <li class="list-inline-item float-end text-dark"></li>
                                 </ul>
                                 <ul class="list-unstyled list-inline py-3 mb-0">
                                     <li class="list-inline-item">
@@ -129,7 +129,7 @@
                                     </li>
                                     <li class="list-inline-item fs-16 fw-semibold text-dark float-end">{{ total_price }}</li>
                                 </ul>
-                                <a href="{% url 'product-checkout' %}" class="btn btn-primary mt-3 float-end">Proceed To
+                                <a href="{% url 'product_checkout' %}" class="btn btn-primary mt-3 float-end">Proceed To
                                     Checkout <i class="icon-xs icon" data-feather="arrow-right"></i></a>
                             </div>
                         </div>

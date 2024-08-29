@@ -31,7 +31,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'bce7-31-202-150-11.ngrok-free.app',
-    'localhost'
+    'localhost',
+    '127.0.0.1',
 ]
 
 
@@ -94,7 +95,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         # 'DIRS': [os.path.join(BASE_DIR,'templates')],
-        'DIRS': [BASE_DIR],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -181,6 +182,7 @@ DEFAULT_FROM_EMAIL = 'YOUR EMAIL ADDRESS'
 SERVER_EMAIL = 'YOUR EMAIL ADDRESS'
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': 'rest_framework.permissions.DjangoModelPermissions',
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.DjangoModelPermissions',
+                                   'rest_framework.permissions.IsAdminUser'),
 }
 

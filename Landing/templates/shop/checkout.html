@@ -37,9 +37,9 @@
                                                 class="mdi mdi-square-edit-outline fs-22 text-muted position-absolute top-0 end-0 mt-2 me-2"></i>
                                         </a>
                                     </h5>
-                                    <p class="my-2 mt-3 text-muted fs-15">4624 Meadowcrest Lane Pikeville, KY 41501</p>
-                                    <p class="my-2 text-muted fs-15">Call : +00 410-790-2942</p>
-                                    <p class="my-2 text-muted fs-15">Email : loremipsum@duy.com</p>
+{#                                    <p class="my-2 mt-3 text-muted fs-15">4624 Meadowcrest Lane Pikeville, KY 41501</p>#}
+                                    <p class="my-2 text-muted fs-15">Call : {{ seller_phone }}</p>
+                                    <p class="my-2 text-muted fs-15">Email : {{ seller_email }}</p>
                                 </div>
                                 <a href="javascript:void(0)" class="btn btn-secondary mt-3"><i
                                         class="mdi mdi-plus-circle"></i> Add Address</a>
@@ -50,49 +50,33 @@
 
                     <div class="mt-5">
                         <h5 class="fw-semibold fs-18">Order Summary</h5>
-                        <div class="row align-items-center">
-                            <div class="col-md-3 mt-4">
-                                <img class="img-fluid rounded-3" src="{% static 'images/products/pro-1.jpg'%}" alt="" />
-                            </div>
-                            <div class="col-md-4 mt-4">
-                                <h5 class="fs-16 fw-semibold">Smart 720p</h5>
-                                <div class="price d-inline-block">
-                                    <ins class="pe-1 fs-15 fw-semibold text-primary text-decoration-none">$29.00</ins>
-                                    <del class="text-muted fs-15">$30.00</del>
+                        {% if checkout %}
+                            {% for product in checkout_product_payload %}
+                                <!-- end row -->
+                                <div class="row align-items-center">
+                                    <div class="col-md-3 mt-4">
+                                        <img class="img-fluid rounded-3" src="{% static 'images/products/pro-3.jpg'%}" alt="" />
+                                    </div>
+                                    <div class="col-md-4 mt-4">
+                                        <h5 class="fs-16 fw-semibold">{{ product.product_name }}</h5>
+                                        <div class="price d-inline-block">
+                                            <ins class="pe-1 fs-15 fw-semibold text-primary text-decoration-none">{{ product.product_price_with_discount }}</ins>
+                                            <del class="text-muted fs-15">{{ product.product_price }}</del>
+                                        </div>
+                                        <select class="form-select border w-50 mt-3" id="autoSizingSelect4">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3" selected>3</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-5 mt-sm-0 mt-4">
+                                        <a href="javascript:void(0)" class="text-uppercase text-muted fw-semibold">Remove <span
+                                                class="mx-3">|</span> Add To Wishlist</a>
+                                    </div>
                                 </div>
-                                <select class="form-select border w-50 mt-3" id="autoSizingSelect3">
-                                    <option value="1" selected>1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                </select>
-                            </div>
-                            <div class="col-md-5 mt-sm-0 mt-4">
-                                <a href="javascript:void(0)" class="text-uppercase text-muted fw-semibold">Remove <span
-                                        class="mx-3">|</span> Add To Wishlist</a>
-                            </div>
-                        </div>
-                        <!-- end row -->
-                        <div class="row align-items-center">
-                            <div class="col-md-3 mt-4">
-                                <img class="img-fluid rounded-3" src="{% static 'images/products/pro-3.jpg'%}" alt="" />
-                            </div>
-                            <div class="col-md-4 mt-4">
-                                <h5 class="fs-16 fw-semibold">Lenovo - ceneral due core</h5>
-                                <div class="price d-inline-block">
-                                    <ins class="pe-1 fs-15 fw-semibold text-primary text-decoration-none">$29.00</ins>
-                                    <del class="text-muted fs-15">$30.00</del>
-                                </div>
-                                <select class="form-select border w-50 mt-3" id="autoSizingSelect4">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3" selected>3</option>
-                                </select>
-                            </div>
-                            <div class="col-md-5 mt-sm-0 mt-4">
-                                <a href="javascript:void(0)" class="text-uppercase text-muted fw-semibold">Remove <span
-                                        class="mx-3">|</span> Add To Wishlist</a>
-                            </div>
-                        </div>
+                            {% endfor %}
+                        {% endif %}
+                        
                     </div>
                 </div>
 
